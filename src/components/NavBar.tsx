@@ -1,39 +1,28 @@
 interface PokemonProps {
-  pokemonList: (
-    | {
-        name: string;
-        imgSrc: string;
-      }
-    | {
-        name: string;
-        imgSrc?: undefined;
-      }
-  )[];
-  pokemonIndex: number;
-  setPokemonIndex: React.Dispatch<React.SetStateAction<number>>;
+  pokemonList: {
+    name: string; //paire clé : type de la valeur avec autant de paires clé : type qu'il y a de propriétés dans l'objets
+    imgSrc?: string;
+    id: number;
+  }[];
+  setPokemonId: React.Dispatch<React.SetStateAction<number>>;
 }
 
-function NavBar({ pokemonList, pokemonIndex, setPokemonIndex }: PokemonProps) {
-  const handleClickPrevious = () => {
-    if (pokemonIndex > 0) {
-      setPokemonIndex(pokemonIndex - 1);
-    }
-  };
-
-  const handleClickNext = () => {
-    if (pokemonIndex < pokemonList.length - 1) {
-      setPokemonIndex(pokemonIndex + 1);
-    }
-  };
-
+function NavBar({ pokemonList, setPokemonId }: PokemonProps) {
   return (
     <>
-      <button type="button" onClick={handleClickPrevious}>
-        Précédent
-      </button>
-      <button type="button" onClick={handleClickNext}>
-        Suivant
-      </button>
+      {pokemonList.map((pokemon) => {
+        return (
+          <button
+            key={pokemon.id}
+            type="button"
+            onClick={() => {
+              setPokemonId(pokemon.id);
+            }}
+          >
+            {pokemon.name}
+          </button>
+        );
+      })}
     </>
   );
 }

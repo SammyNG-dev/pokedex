@@ -9,28 +9,33 @@ function App() {
       name: "bulbasaur",
       imgSrc:
         "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+      id: 0,
     },
     {
       name: "charmander",
       imgSrc:
         "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
+      id: 1,
     },
     {
       name: "squirtle",
       imgSrc:
         "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
+      id: 2,
     },
     {
       name: "pikachu",
       imgSrc:
         "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+      id: 3,
     },
     {
       name: "mew",
+      id: 4,
     },
   ];
 
-  const [pokemonIndex, setPokemonIndex] = useState(0);
+  const [pokemonId, setPokemonId] = useState(0);
 
   // const handleClickPrevious = () => {
   //   setPokemonIndex(pokemonIndex - 1);
@@ -42,12 +47,9 @@ function App() {
 
   return (
     <div>
-      <PokemonCard pokemon={pokemonList[pokemonIndex]} />
-      <NavBar
-        pokemonList={pokemonList}
-        pokemonIndex={pokemonIndex}
-        setPokemonIndex={setPokemonIndex}
-      />
+      <PokemonCard pokemon={pokemonList[pokemonId]} />
+      {/* <NavBar pokemonList={pokemonList} setPokemonId={setPokemonId} /> */}
+      <NavBar pokemonList={pokemonList} setPokemonId={setPokemonId} />
     </div>
   );
 }
