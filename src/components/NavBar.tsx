@@ -1,6 +1,6 @@
 interface PokemonProps {
   pokemonList: {
-    name: string; //paire clé : type de la valeur avec autant de paires clé : type qu'il y a de propriétés dans l'objets
+    name: string;
     imgSrc?: string;
     id: number;
   }[];
@@ -17,6 +17,7 @@ function NavBar({ pokemonList, setPokemonId }: PokemonProps) {
             type="button"
             onClick={() => {
               setPokemonId(pokemon.id);
+              pokemon.name === "pikachu" ? alert("pika pikachu !!!") : "";
             }}
           >
             {pokemon.name}
